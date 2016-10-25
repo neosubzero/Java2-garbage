@@ -5,6 +5,7 @@ import java.util.*;
  * through a LinkedList.
  *
  * @author Ernest Carter
+ * @revised 25 October 2016
  */
 public class Iterator<T> {
 
@@ -20,13 +21,10 @@ public class Iterator<T> {
 	 * @return true if there is a "next" element, otherwise returns false
 	 */
     public boolean hasNext() {
-		
-        if (myCurrentNode == null) {
+        if (myCurrentNode != null) {
 		    return true;
 		}
-		else {
-			return false;
-		}
+		return false;
     } // end method hasNext
  
     /** 

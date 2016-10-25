@@ -9,48 +9,61 @@ import java.util.NoSuchElementException;
  * @author	Ernest Carter
  * @revised 16 October 2016
  */ 
- 
 public class IteratorTest {
-	LinkedList<String> stringList = new LinkedList<String>();
+	LinkedList<String> stringList;
 	String fido;
 	String cerberus;
 	String krypto;
 	String seven;
 	String akamaru;
-	Iterator<String> iterator = new Iterator(stringList);
+	Iterator<String> iterator;
 	 
+	 /**
+	  * Sets up the test for iterator
+	  */
 	@Before
 	public void setup() {
-	fido = new String("fido");
-	cerberus = new String("Cerberus");
-	krypto = new String("krypto");
-	seven = new String("Seven");
-	akamaru = new String("akamaru");
+		stringList = new LinkedList<String>();
+		
+		fido = new String("Fido");
+		cerberus = new String("Cerberus");
+		krypto = new String("krypto");
+		seven = new String("Seven");
+		akamaru = new String("Akamaru");
 	 
-	stringList.add(fido);
-	stringList.add(cerberus);
-	stringList.add(krypto);
-	stringList.add(seven, 2);
-	stringList.add(akamaru, 8);
+		stringList.add(fido);
+		stringList.add(cerberus);
+		stringList.add(krypto);
+		stringList.add(seven, 2);
+		stringList.add(akamaru, 8);
+		
+		iterator = stringList.getIterator();
 	
 	System.out.println(stringList);
-	System.out.println();
 	} // end method setup
 	
+	/**
+	 * Tests to see if there's a next node
+	 * and move to next node if there is
+	 */
 	@Test
 	public void testHasNextAndNext() {
-		assertEquals(iterator.hasNext(), true);
-		assertEquals(iterator.next(), fido);
-		assertEquals(iterator.hasNext(), true);
-		assertEquals(iterator.next(), cerberus);
-		assertEquals(iterator.hasNext(), true);
-		assertEquals(iterator.next(), seven);
-		assertEquals(iterator.hasNext(), true);
-		assertEquals(iterator.next(), krypto);
-		assertEquals(iterator.hasNext(), false);
+		assertTrue(iterator.hasNext() == true);
+		assertTrue((iterator.next()).equals(fido));
+		assertTrue(iterator.hasNext() == true);
+		assertTrue((iterator.next()).equals(cerberus));
+		assertTrue(iterator.hasNext() == true);
+		assertTrue((iterator.next()).equals(seven));
+		assertTrue(iterator.hasNext() == true);
+		assertTrue((iterator.next()).equals(krypto));
+		assertTrue(iterator.hasNext() == false);
 		
-	}
+	} // end method testHasNextAndNext
 	
+	/**
+	 * Tests to see if there's a prior node
+	 * and move to prior node if there is
+	 */
 	public void testHasPriorAndPrior() {
 		iterator.setToEnd();
 		assertEquals(iterator.hasPrior(), true);
@@ -61,5 +74,5 @@ public class IteratorTest {
 		assertEquals(iterator.prior(), cerberus);
 		assertEquals(iterator.hasPrior(), false);
 		assertEquals(iterator.prior(), null);
-	}
-}
+	} // end method testHasPriorAndPrior
+} // end class IteratorTest

@@ -16,6 +16,7 @@ public class LinkedListTest {
 	String krypto;
 	String seven;
 	String akamaru;
+	
 	 
 	/**
 	 * Sets up the test LinkedList
@@ -33,6 +34,7 @@ public class LinkedListTest {
 	stringList.add(krypto);
 	stringList.add(seven, 2);
 	stringList.add(akamaru, 8);
+	
 	} // end method setup
 	 
 	/**
@@ -69,6 +71,4 @@ public class LinkedListTest {
 		assertTrue(stringList.indexOf(krypto) == 3);
 		assertTrue(stringList.indexOf(akamaru) == -1);
 	} // end method testIndexOf
-	 
-	 
- }
+ } // end class LinkedListTest
