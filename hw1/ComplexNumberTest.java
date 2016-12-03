@@ -28,6 +28,8 @@ public class ComplexNumberTest
 	
 	/**
 	 * Tests the add method of class ComplexNumber
+	 *
+	 * @author Ernest Carter
 	 */
 	@Test
 	public void testAdd() {
