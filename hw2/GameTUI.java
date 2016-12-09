@@ -91,17 +91,21 @@ public class GameTUI implements Serializable
 	
 	//Save game state
 	public void saver() {
-		OutputStream file;
-		try (ObjectOutputStream save = new ObjectOutputStream(file = new FileOutputStream("SavedGame.dat"))) 
+		try  
 		{
-			save.writeObject(itsDungeon);
+			FileOutputStream fileOut = new FileOutputStream("SavedGame.dat");
+			ObjectOutputStream objOut = new ObjectOutputStream(fileOut);
+			objOut.writeObject(itsDungeon);
+			objOut.close();
+			fileOut.close();
+			
 		}
 		catch (IOException e) {
 			System.out.println("Could not create file");
 		}
 		catch (NoSuchElementException e) {
 			
-		}
+		} 
 		catch (NullPointerException e) {
 			
 		}
@@ -110,15 +114,19 @@ public class GameTUI implements Serializable
 	//Load game state
 	public void loader() {
 		InputStream file;
-		try (ObjectInputStream load = new ObjectInputStream(file = new FileInputStream("SavedGame.dat")))
+		try
 		{
-			Dungeon itsDungeon = (Dungeon)load.readObject();
+			FileInputStream fileIn = new FileInputStream("SavedGame.dat");
+			ObjectInputStream objIn = new ObjectInputStream(fileIn);
+			itsDungeon = (Dungeon)objIn.readObject();
+			objIn.close();
+			fileIn.close();
 		}
 		catch (IOException e) {
 			System.out.println("Could not load file");
 		}
 		catch (NoSuchElementException e) {
-			
+			System.out.println("Saved file does not exist");
 		}
 		catch (ClassNotFoundException e) {
 			

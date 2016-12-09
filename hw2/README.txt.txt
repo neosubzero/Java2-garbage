@@ -1,0 +1,1 @@
+Must run using   cat d1.txt - | java AdventureGame
